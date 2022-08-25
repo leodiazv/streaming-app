@@ -1,0 +1,87 @@
+.home {
+  background-color: rgb(255, 255, 255);
+}
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 30px;
+  justify-content: space-around;
+  max-width: 1280px;
+}
+
+.categoryCard {
+  margin: 15px 0;
+  padding: 0;
+  height: 100px;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px #0002;
+}
+
+.categoryCard i {
+  font-size: 70px;
+}
+
+.action {
+  background-color: brown;
+}
+
+.comedy {
+  background-color: #32b5bf;
+}
+
+.animation {
+  background-color: #4cba71;
+}
+
+.drama {
+  background-color: #f9b3d5;
+}
+
+.mistery {
+  background-color: orange;
+}
+
+@media screen and (min-width: 768px) {
+  .categoryList {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .categoryCard {
+    width: 300px;
+    height: 200px;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .categoryList {
+    justify-content: space-between;
+    max-width: 1290px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 0 30px;
+  }
+
+  .categoryCard {
+    width: 400px;
+    margin: 30px 20px;
+  }
+
+  .action {
+    grid-column: span 2;
+    width: 700px;
+  }
+  .drama,
+  .animation,
+  .mistery {
+    width: 350px;
+  }
+}

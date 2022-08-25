@@ -1,0 +1,30 @@
+.header {
+  background-color: brown;
+  position: sticky;
+  width: 100%;
+  display: flex;
+  padding: 15px 30px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  z-index: 1;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .logoContainer {
+    font-size: 30px;
+  }
+  .openMenuBtn {
+    display: none;
+  }
+}

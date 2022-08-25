@@ -1,0 +1,87 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  right: -220px;
+  width: 220px;
+  height: 100%;
+  background-color: brown;
+  z-index: 10;
+  transition: 1s;
+  color: #fff;
+  padding-top: 20px;
+}
+
+.isClosed {
+  transform: translateX(220px);
+}
+
+.isOpen {
+  transform: translateX(-220px);
+}
+
+.closeButton,
+.logoutButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: brown;
+  background-color: #fff;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.logoutButton i {
+  margin-right: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list li {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  margin: 15px 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .logoutButton i {
+    font-size: 20px;
+    margin: 10px 10px;
+  }
+
+  .closeButton {
+    visibility: hidden;
+  }
+  .navBar {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 900px;
+    margin-top: 0;
+    padding: 0;
+    right: 0;
+    align-items: center;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+  }
+
+  .list li {
+    display: flex;
+  }
+
+  .closeButton,
+  .logoutButton {
+    width: 200px;
+  }
+}
