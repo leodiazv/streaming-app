@@ -29,6 +29,41 @@ El código está organizado de la siguiente manera:
 - pages: Componentes principales para las vistas.
 - stores: Archivos para el manejo de estados globales.
 
+```
+src/
+┣ assets/
+┃ ┣ styles/
+┃ ┃ ┣ contentCategory.module.css
+┃ ┃ ┣ contentDetails.module.css
+┃ ┃ ┣ header.module.css
+┃ ┃ ┣ home.module.css
+┃ ┃ ┣ login.module.css
+┃ ┃ ┣ mainLayout.module.css
+┃ ┃ ┣ navBar.module.css
+┃ ┃ ┗ youtubeEmbed.module.css
+┃ ┗ react.svg
+┣ components/
+┃ ┣ NavBar.tsx
+┃ ┣ ProtectedRoutes.tsx
+┃ ┗ YoutubeEmbed.tsx
+┣ layouts/
+┃ ┣ Header.tsx
+┃ ┗ MainLayout.tsx
+┣ pages/
+┃ ┣ ContentCategory.tsx
+┃ ┣ ContentDetails.tsx
+┃ ┣ Home.tsx
+┃ ┗ Login.tsx
+┣ stores/
+┃ ┗ auth.ts
+┣ App.css
+┣ App.tsx
+┣ index.css
+┣ main.tsx
+┣ types.ts
+┗ vite-env.d.ts
+```
+
 ## Workflow y herramientas
 
 **[Vite](https://vitejs.dev/)** fue la herramienta escogida para el servidor de desarrollo.
