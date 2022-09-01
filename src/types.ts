@@ -7,6 +7,7 @@ export interface Movie {
   genres: Genre[]
   overview: string
   video: string
+  id: number
 }
 
 export interface Genre {

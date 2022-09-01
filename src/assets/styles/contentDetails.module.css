@@ -4,12 +4,14 @@
 }
 
 .backdropImage {
-  filter: opacity(70%);
+  filter: opacity(60%);
   position: absolute;
   z-index: -1;
   left: 0;
   width: 100%;
   top: 0;
+  max-height: 600px;
+  object-fit: cover;
 }
 
 .posterImage {

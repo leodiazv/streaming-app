@@ -1,48 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
 import styles from '../assets/styles/contentCategory.module.css'
-import NavBar from '../components/NavBar'
-import { Genre } from '../types'
+import { useMoviesStore } from '../stores/movies'
+import { useCategoriesStore } from '../stores/movieCategories'
 
 const ContentCategory = () => {
-  const [media, setMedia] = useState<any[]>([])
-  const [category, setCategory] = useState<string>()
-
   const { categoryId } = useParams()
 
-  const API_KEY = 'a1476201b739d55b32956a65db2510dc'
+  const { movies, fetchMovies, status } = useMoviesStore()
+  const { categories, fetchCategories } = useCategoriesStore()
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${categoryId}&release_date.lte=2022-08-23&sort_by=release_date.desc`,
-      )
-      .then(res => setMedia(res.data.results))
-      .catch(err => console.log(err))
+    fetchMovies(Number(categoryId))
+    fetchCategories()
   }, [])
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=es-ES`,
-      )
-      .then(res => {
-        const genres = res.data.genres as Genre[]
-        if (!genres) return
-        const currentGenre = genres.find(cat => cat.id === Number(categoryId))
-        setCategory(currentGenre?.name)
-      })
-      .catch(err => console.log(err))
-  }, [])
+  const currentCategory = categories.find(cat => cat.id === Number(categoryId))
 
-  if (!media) return <p>Cargando..</p>
+  if (status === 'loading') return <p>Cargando..</p>
 
   return (
     <div className={styles.contentCategory}>
-      <h1>{category?.toUpperCase()}</h1>
+      <h1>{currentCategory?.name.toUpperCase()}</h1>
       <ul className={styles.movieList}>
-        {media.map(movie => (
+        {movies.map(movie => (
           <li key={movie.id}>
             <Link to={`/movie/${movie.id}`}>
               <div className={styles.movieCard}>

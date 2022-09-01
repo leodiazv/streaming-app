@@ -1,38 +1,30 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Movie } from '../types'
 import styles from '../assets/styles/contentDetails.module.css'
 import YoutubeEmbed from '../components/YoutubeEmbed'
+import { useMovieStore } from '../stores/movieDetails'
+import backdropPlaceholder from '../assets/img/backdrop-placeholder.png'
 
 const ContentDetails = () => {
-  const { movieId } = useParams()
+  const movieId = useParams().movieId as string
 
-  const [movie, setMovie] = useState<Movie>()
-  const API_KEY = 'a1476201b739d55b32956a65db2510dc'
+  const { movie, fetchMovieDetails, status } = useMovieStore()
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,videos,images`,
-      )
-      .then(res => {
-        setMovie(res.data)
-      })
-      .catch(err => console.log(err))
+    fetchMovieDetails(movieId)
   }, [])
 
-  console.log(movie)
-  if (!movie) return <p>Cargando..</p>
+  if (status === 'loading') return <p>Cargando..</p>
+  if (status === 'error' || !movie) return <p>Cargando..</p>
 
   return (
     <div className={styles.contentDetails}>
-      {movie.backdrop_path !== null && (
-        <img
-          className={styles.backdropImage}
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-        ></img>
-      )}
+      <img
+        className={styles.backdropImage}
+        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+        alt=""
+      ></img>
+
       <div className={styles.movieDetailsContainer}>
         <img
           className={styles.posterImage}

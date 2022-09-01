@@ -12,7 +12,7 @@ Es un catálogo de películas consumiendo una API desde [The Movie Database](htt
 
 Si quieres ejecutar esta aplicación localmente, clonar el repo y sigue los comandos a continuación:
 
-1. You can locally install and execute json-server:
+1. Puedes instalar y ejecutar localmente con lo siguientes comandos:
 
 ```
 npm i
@@ -31,7 +31,11 @@ El código está organizado de la siguiente manera:
 
 ```
 src/
+┣ api/
+┃ ┗ tmdb-client.ts
 ┣ assets/
+┃ ┣ img/
+┃ ┃ ┗ backdrop-placeholder.png
 ┃ ┣ styles/
 ┃ ┃ ┣ contentCategory.module.css
 ┃ ┃ ┣ contentDetails.module.css
@@ -55,7 +59,10 @@ src/
 ┃ ┣ Home.tsx
 ┃ ┗ Login.tsx
 ┣ stores/
-┃ ┗ auth.ts
+┃ ┣ auth.ts
+┃ ┣ movieCategories.ts
+┃ ┣ movieDetails.ts
+┃ ┗ movies.ts
 ┣ App.css
 ┣ App.tsx
 ┣ index.css
